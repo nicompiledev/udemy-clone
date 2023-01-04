@@ -43,9 +43,25 @@ function leerDatosCurso(curso) {
         cantidad: 1
     }
     
+    //Revisa si un elemento ya existe en el carrito
+    const existe = articulosCarrito.some( curso => curso.id === infoCurso.id );
+    if(existe){
+        //Actualizamos la cantidad
+        const cursos = articulosCarrito.map( curso => {
+            if(curso.id === infoCurso.id) {
+                curso.cantidad++;
+                return curso; //Retorna el objeto actualizado
+            } else {
+                return curso; //Retorna los objetos que no son duplicados
+            }
+        } );
+    }else{
+      //Agrega elementos al arreglo de carrito
+      articulosCarrito = [...articulosCarrito, infoCurso];
 
-    //Agrega elementos al arreglo de carrito
-    articulosCarrito = [...articulosCarrito, infoCurso];
+    }
+    
+
     console.log(articulosCarrito);
 
     carritoHTML();
@@ -117,6 +133,44 @@ function limpiarHTML() {
 //     // Obtener el contenido del elemento "h4"
 //     var contenido = h4.innerHTML;
     
+//     // Mostrar el contenido en la consola
+//     console.log(contenido);
+//   });
+// }
+
+// // Obtener el elemento con id "header"
+// var header = document.getElementById("header");
+
+// // Obtener el elemento con clase "row" que es hijo de "header"
+// var row = header.querySelector(".row");
+
+// // Obtener el elemento con clase "two columns" que es hijo de "row"
+// var twoColumns = row.querySelector(".two.columns");
+
+// // Obtener el primer elemento "li" que es hijo de "twoColumns"
+// var li = twoColumns.querySelector("li");
+
+// // Obtener el elemento "div" que es hijo de "li"
+// var carrito = li.querySelector("div");
+
+// // Obtener el elemento "table" que es hijo de "carrito"
+// var table = carrito.querySelector("table");
+
+// // Obtener el elemento "tbody" que es hijo de "table"
+// var tbody = table.querySelector("tbody");
+
+// // Obtener todos los elementos "div" con clase "card"
+// var cards = document.querySelectorAll(".card");
+
+// // Asignar un "event listener" para el evento "click" a cada elemento "div"
+// for (var i = 0; i < cards.length; i++) {
+//   cards[i].addEventListener("click", function() {
+//     // Obtener el elemento "h4" que está dentro de este elemento "div"
+//     var h4 = this.querySelector("h4");
+
+//     // Obtener el contenido del elemento "h4"
+//     var contenido = h4.innerHTML;
+
 //     // Mostrar el contenido en la consola
 //     console.log(contenido);
 //   });
