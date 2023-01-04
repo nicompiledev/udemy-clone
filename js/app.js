@@ -94,7 +94,12 @@ function carritoHTML() {
 
 // Elimina los cursos del tbody
 function limpiarHTML() {
-    contenedorCarrito.innerHTML = '';
+    //Forma lenta
+    // contenedorCarrito.innerHTML = '';
+    
+    while(contenedorCarrito.firstChild) {
+        contenedorCarrito.removeChild(contenedorCarrito.firstChild);
+    }
 }
 
 
